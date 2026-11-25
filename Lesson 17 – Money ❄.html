@@ -1,0 +1,123 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><title>Lesson 17 – Money ❄</title>
+<style>
+:root{--bg:#050b1f;--tx:#f4fbff;--gl:#7fd8ff;--ac:#ffd36e;--pk:#ff8fb8;color-scheme:dark}
+*{box-sizing:border-box}html,body{margin:0}
+body{background:radial-gradient(ellipse at 50% 0,#14306b,#050b1f 70%) fixed;color:var(--tx);font:700 clamp(19px,2.3vw,27px)/1.6 Georgia,serif;min-height:100vh;padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0)}
+#snow{position:fixed;inset:0;z-index:0;pointer-events:none}
+main{position:relative;z-index:1;max-width:1100px;margin:auto;padding:16px}
+h1{font-size:clamp(44px,9vw,96px);text-align:center;margin:.2em 0;text-shadow:0 0 25px var(--gl)}
+h1 span,h2 span{display:inline-block;animation:bob 2.4s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-12px);color:var(--ac);text-shadow:0 0 30px var(--ac)}}
+h2{font-size:clamp(34px,6vw,62px);text-align:center;color:var(--gl);margin:.3em 0}
+nav{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;position:sticky;top:env(safe-area-inset-top,0);z-index:5;padding:8px;background:#050b1fcc;backdrop-filter:blur(6px)}
+nav button,.go{font:inherit;font-size:20px;color:var(--tx);background:#0d2150;border:2px solid var(--gl);border-radius:30px;padding:8px 18px;cursor:pointer;box-shadow:0 0 18px #7fd8ff66}
+nav button.on,.go:hover{background:var(--gl);color:#05102a}
+section{display:none;background:#0a1a4a55;border-radius:28px;padding:22px;box-shadow:0 0 60px #7fd8ff44,inset 0 0 40px #7fd8ff22;border:1px solid #7fd8ff66}
+section.on{display:block;animation:in .7s}@keyframes in{from{opacity:0;transform:translateY(30px)}}
+.gram{background:#ffffff12;border-left:6px solid var(--ac);padding:10px 18px;margin:14px 0;border-radius:14px;text-shadow:0 0 8px #000}
+.gram b,.ex{color:var(--ac)}.ex{font-style:italic}
+.w{color:var(--pk);cursor:pointer;border-bottom:3px dotted var(--pk);text-shadow:0 0 12px var(--pk)}.w:hover{color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:14px}
+.bub{background:radial-gradient(circle at 30% 25%,#2d5cc0,#0d2150);border:2px solid var(--gl);border-radius:50%/42%;padding:20px;text-align:center;cursor:pointer;min-height:130px;display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 25px #7fd8ff77;transition:.3s}
+.bub:hover{transform:scale(1.07) rotate(-1deg)}.bub.done{border-color:#7dffb0;box-shadow:0 0 30px #7dffb0aa}
+#mod{position:fixed;inset:0;z-index:20;background:#020618ee;display:none;align-items:center;justify-content:center;padding:18px;overflow:auto}
+#mod.on{display:flex}
+#box{max-width:900px;width:100%;max-height:92vh;overflow:auto;padding:28px;border-radius:30px;background:linear-gradient(#10286a,#07133a);border:3px solid var(--gl);box-shadow:0 0 80px #7fd8ffaa;animation:pop .45s}
+@keyframes pop{from{transform:scale(.4);opacity:0}}
+#box h3{font-size:clamp(30px,5vw,50px);margin:0 0 10px;color:var(--ac)}
+.chip{display:inline-block;background:var(--pk);color:#1a0612;border-radius:20px;padding:2px 14px;margin:3px;font-size:20px}
+.lang{color:var(--gl)}.x{float:right;font-size:34px;cursor:pointer;color:var(--pk)}
+#globe{position:fixed;inset:0;z-index:30;background:#020618f2;display:none;align-items:center;justify-content:center;flex-direction:column;text-align:center}
+#globe.on{display:flex}#ball{font-size:min(60vw,420px);animation:spin 3s ease-in-out infinite;filter:drop-shadow(0 0 50px #7fd8ff)}
+@keyframes spin{50%{transform:rotate(12deg) scale(1.08)}}
+</style></head><body><canvas id="snow"></canvas><main>
+<h1 id="t">Lesson 17 – Money</h1>
+<nav id="nav"></nav>
+<section id="s1"><h2>1 · Grammar</h2>
+<div class="gram"><b>Second conditional</b> – unreal present/future: <b>If + past simple, would + verb.</b><br><span class="ex">If I inherited a fortune, I would invest it.</span></div>
+<div class="gram"><b>Wish + past simple</b> – regret about now: <span class="ex">I wish I had a bigger emergency fund.</span> (<b>were</b> for all persons; <b>wish … would</b> = annoyance/change)</div>
+<div class="gram"><b>Present perfect</b> – <b>have/has + V3</b> – past with present result or life experience: <span class="ex">She has squandered her savings.</span></div>
+<h2 style="font-size:36px">100-word text</h2>
+<p id="g100"></p></section>
+<section id="s2"><h2>2 · Speaking Text</h2><p style="text-align:center;color:var(--gl)">Tap any pink word 👆</p><p id="txt"></p></section>
+<section id="s3"><h2>3 · Part 1 Bubbles</h2><p id="p1s" style="text-align:center"></p><div class="grid" id="g3"></div></section>
+<section id="s4"><h2>4 · Part 2 Cue Cards</h2><div class="grid" id="g4"></div></section>
+<section id="s5"><h2>5 · Part 3 Questions</h2><div class="grid" id="g5"></div></section>
+<section id="s6"><h2>6 · Homework: Money</h2><div class="grid" id="g6"></div></section>
+</main>
+<div id="mod"><div id="box"></div></div>
+<div id="globe"><div id="ball">🔮</div><h2>Snowball unlocked! ❄ All 20 done!</h2><button class="go" onclick="globe.classList.remove('on')">Close</button></div>
+<script>
+const $=id=>document.getElementById(id);
+const G100="I have always been frugal, but I wish I had more savings. If I earned double, I would set aside half. My brother has squandered his salary, so he wishes he were smarter. If he made a budget, he would stop being broke. I have just opened a deposit account, and I have never felt safer. If I could, I would donate more to charity. I wish banks would charge less interest. Honestly, if people understood money, they would worry less, and they would live better.";
+$('g100').innerHTML=G100;
+const T="I have always been a <b class=w data-k=frugal>frugal</b> person, and I have <b class=w data-k=aside>set aside</b> money every month, yet I have never felt secure. If I <b class=w data-k=inherit>inherited</b> a <b class=w data-k=fortune>fortune</b>, I would <b class=w data-k=invest>invest</b> it wisely. If I were <b class=w data-k=broke>broke</b>, I would not take out a <b class=w data-k=loan>loan</b>. I wish I had a bigger <b class=w data-k=fund>emergency fund</b>! My sister has <b class=w data-k=squander>squandered</b> her savings, and she wishes she were more <b class=w data-k=savvy>savvy</b>. Last week she made a <b class=w data-k=deposit>deposit</b>, but she has made a <b class=w data-k=withdrawal>withdrawal</b> already! If she had a strict <b class=w data-k=budget>budget</b>, she would cover her <b class=w data-k=living>living expenses</b> easily and pay the <b class=w data-k=install>installments</b> with less <b class=w data-k=interest>interest</b>. I wish people would <b class=w data-k=donate>donate</b> more, and I have helped <b class=w data-k=raise>raise money</b> for charity. If I travelled abroad, I would change <b class=w data-k=currency>currency</b> only at banks, because <b class=w data-k=counterfeit>counterfeit</b> notes are common.";
+$('txt').innerHTML=T;
+// key|pron|EN|RU|UZ|ex1|ex2|ex3
+const W={frugal:"frugal|/ˈfruːɡəl/|careful about spending; not wasteful|экономный, бережливый|tejamkor|My grandma is frugal and reuses everything.|A frugal student buys second-hand books.|Being frugal helped him buy a flat.",
+aside:"set aside|/set əˈsaɪd/|keep money for a future purpose|откладывать (деньги)|ajratib qo'ymoq, jamg'armoq|I set aside 10% of my salary.|She sets aside money for travel.|Have you set anything aside for emergencies?",
+inherit:"inherit|/ɪnˈherɪt/|receive money/property from someone who has died|унаследовать|meros olmoq|He inherited a house from his uncle.|If I inherited land, I would farm it.|She inherited her mother's jewellery.",
+fortune:"fortune|/ˈfɔːtʃuːn/|a very large amount of money|состояние, богатство|katta boylik|The painting cost a fortune.|He made a fortune in IT.|She would never waste a fortune.",
+invest:"invest|/ɪnˈvest/|put money into something to make profit|инвестировать|sarmoya kiritmoq|I invest in shares every year.|They invested in a small café.|If I had cash, I would invest it.",
+broke:"broke|/brəʊk/|having no money (informal)|без денег, на мели|pulsiz, kambag'al|I'm broke until Friday.|He went broke after the crisis.|Students are often broke.",
+loan:"loan|/ləʊn/|money you borrow and must pay back|кредит, заём|qarz, kredit|She took out a loan for a car.|The bank refused his loan.|I would avoid a big loan.",
+fund:"emergency fund|/ɪˈmɜːdʒənsi fʌnd/|savings for unexpected problems|резервный фонд|favqulodda jamg'arma|An emergency fund saved us when I lost my job.|Experts advise a 3–6 month emergency fund.|I wish I had an emergency fund.",
+squander:"squander|/ˈskwɒndə/|waste money or chances|транжирить, растрачивать|isrof qilmoq|He squandered his bonus on gadgets.|Don't squander your time.|She has squandered a lot of money.",
+savvy:"savvy|/ˈsævi/|smart and well-informed about something|смышлёный, сведущий|ziyrak, sinchkov|She is financially savvy.|A savvy shopper waits for sales.|I wish I were more tech-savvy.",
+deposit:"deposit|/dɪˈpɒzɪt/|money put into a bank account (or first payment)|вклад, депозит|omonat, depozit|I made a deposit this morning.|The flat needs a deposit of $500.|He earns interest on his deposit.",
+withdrawal:"withdrawal|/wɪðˈdrɔːəl/|taking money out of your account|снятие денег|pul yechish|I made a cash withdrawal.|There's a daily withdrawal limit.|Her withdrawal surprised the bank.",
+budget:"budget|/ˈbʌdʒɪt/|a plan for how to spend money|бюджет|byudjet|We made a monthly budget.|If I had a budget, I'd stop overspending.|I stick to my budget.",
+living:"living expenses|/ˈlɪvɪŋ ɪkˈspensɪz/|money needed for everyday life|расходы на жизнь|yashash xarajatlari|Rent is my biggest living expense.|Her salary covers her living expenses.|Living expenses are high in big cities.",
+install:"installments|/ɪnˈstɔːlmənts/|regular smaller payments over time|рассрочка, взносы|bo'lib to'lash|I pay for my phone in installments.|She paid back the loan in monthly installments.|Installments make big purchases easier.",
+interest:"interest|/ˈɪntrəst/|extra money paid on a loan or earned on savings|проценты|foiz|The bank charges 15% interest.|I earn interest on my savings.|Low interest rates help borrowers.",
+donate:"donate|/dəʊˈneɪt/|give money for a good cause|жертвовать|xayriya qilmoq|They donated to the hospital.|I donate every Ramadan.|If I were rich, I would donate more.",
+raise:"raise money|/reɪz ˈmʌni/|collect donations for a cause|собирать средства|mablag' yig'moq|We raised money for a school.|Students raise money by baking.|They have raised money for years.",
+currency:"currency|/ˈkʌrənsi/|the money used in a country|валюта|valyuta|The currency here is the sum.|I changed currency at the airport.|Foreign currency can be expensive.",
+counterfeit:"counterfeit|/ˈkaʊntəfɪt/|fake, made to look real (money)|поддельный|soxta|The shop spotted a counterfeit note.|Counterfeit bills are illegal.|Be careful with counterfeit goods."};
+document.querySelectorAll('.w').forEach(e=>e.onclick=()=>{const[k,p,en,ru,uz,a,b,c]=W[e.dataset.k].split('|');
+show(`<h3>${k}</h3><p class=lang>🔊 ${p}</p><p>🇬🇧 ${en}</p><p>🇷🇺 ${ru}</p><p>🇺🇿 ${uz}</p><p class=ex>1. ${a}</p><p class=ex>2. ${b}</p><p class=ex>3. ${c}</p>`)});
+function show(h){$('box').innerHTML='<span class=x onclick="mod.classList.remove(\'on\')">✕</span>'+h;mod.classList.add('on')}
+const mod=$('mod'),globe=$('globe');mod.onclick=e=>{if(e.target==mod)mod.classList.remove('on')};
+// Part 1: question|use
+const P1="Do you save money regularly?|set aside · present perfect;Do you think you are good at managing money?|savvy · wish;What do you usually spend money on?|living expenses · budget;Did you receive pocket money as a child?|saved · used to;Is it better to save or spend money?|frugal · second conditional;Do you prefer cash or cards?|withdrawal · wish;Have you ever borrowed money?|loan · present perfect;Would you like to be rich?|fortune · If I…, I would;What would you do if you won the lottery?|invest · second conditional;Do you think young people waste money?|squander · present perfect;Do you ever donate money?|donate · wish;Is it easy to be financially independent?|living expenses · wish;Do you make a budget?|budget · If I had…;Have you ever been broke?|broke · present perfect;How do people pay for expensive items in your country?|installments · interest;Do you give gifts of money?|deposit · wish;Have you ever been to another country?|currency · counterfeit;Do you check prices before buying?|frugal · present perfect;Do you think banks are safe?|deposit · interest;Would you lend money to a friend?|loan · If I…, I would".split(';').map(s=>s.split('|'));
+let dn=0;$('p1s').textContent='0 / 20 done';
+P1.forEach(([q,u],i)=>{const d=document.createElement('div');d.className='bub';d.textContent=q;d.onclick=()=>{show(`<h3>${q}</h3><p>🎯 You MUST use: ${u.split(' · ').map(x=>`<span class=chip>${x}</span>`).join('')}</p><p class=ex>Tip: answer + reason + example (2–3 sentences).</p><button class=go id=ok>Done ✓</button>`);
+$('ok').onclick=()=>{if(!d.classList.contains('done')){d.classList.add('done');dn++;$('p1s').textContent=dn+' / 20 done'}mod.classList.remove('on');if(dn==20)globe.classList.add('on')}};$('g3').append(d)});
+// Part 2: title|a|b|c|d
+const P2="Describe a time you saved money for something special|what it was|how long you saved|how you felt|why it mattered;Describe a person who is good with money|who they are|how you know them|what they do|why you admire them;Describe something expensive you bought|what it was|where you bought it|why it was costly|if it was worth it;Describe a time you gave money to a charity|who|when|why|how you felt;Describe a time you borrowed or lent money|who|how much|why|what happened;Describe a gift of money you received|who gave it|when|what you did|how you felt;Describe a bargain you found|what|where|how much you saved|why you liked it;Describe a time you wasted money|what you bought|why|what you learned|how you felt;Describe a family member who is frugal|who|how they save|examples|your opinion;Describe a shop where you like spending money|where|what it sells|how often you go|why you like it;Describe a time you were caught off guard by a price|what|where|how much|how you reacted;Describe a financial goal you have|what|why|your plan|obstacles;Describe a time you used a bank|which bank|what you did|how it went|how you felt;Describe a job where you earned money|what|when|how much|what you learned;Describe a place where you changed currency|where|why|how it went|what you remember".split(';').map(s=>s.split('|'));
+P2.forEach(([t,a,b,c,d],i)=>{const e=document.createElement('div');e.className='bub';e.textContent=(i+1)+'. '+t;e.onclick=()=>show(`<h3>${t}</h3><p>You should say:<br>• ${a}<br>• ${b}<br>• ${c}<br>• and explain ${d}</p><p class=lang>🧩 Idea map:<br>① <b>Hook</b> – one-line answer. <span class=ex>"The first thing that comes to mind is…"</span><br>② <b>${a}</b> – background (present perfect).<br>③ <b>${b} + ${c}</b> – story with detail and a vivid example.<br>④ <b>${d}</b> – feeling + reflection: <span class=ex>"If I could do it again, I would…" / "I wish I had…"</span></p>`);$('g4').append(e)});
+const P3="Why do some people save more than others?;Should schools teach financial literacy?;Do you think people spend more money nowadays than in the past?;Is it a good idea for young people to take loans?;Why do some people waste money on luxury items?;How has online banking changed the way people use money?;Should rich people donate more to charity?;What would happen if cash disappeared?;Do you think money can buy happiness?;Is it better to rent or buy a home?;How can governments help people who are broke?;Should parents give children pocket money?;Why are counterfeit goods popular?;What are the advantages of investing in the stock market?;How might people's attitudes to money change in the future?".split(';');
+P3.forEach((q,i)=>{const e=document.createElement('div');e.className='bub';e.textContent=(i+1)+'. '+q;e.onclick=()=>show(`<h3>${q}</h3><p class=lang>🧩 Structure:<br>① <b>Opinion</b> – <span class=ex>"I'd say it largely depends on…"</span><br>② <b>Reason</b> – because…<br>③ <b>Example</b> – <span class=ex>"If people were taught…, they would…"</span><br>④ <b>Other side</b> – however, some people argue…<br>⑤ <b>Conclusion</b> – so overall…</p>`);$('g5').append(e)});
+const H="Part 1: Do you think money is important in life?;Part 1: What was the first thing you bought with your own money?;Part 1: Do you prefer shopping online or in shops?;Part 1: Have you ever lost money?;Part 2: Describe an advertisement that made you want to buy something;Part 2: Describe something you want to buy in the future;Part 2: Describe a time you paid for a meal for other people;Part 2: Describe a successful businessperson you admire;Part 3: Why are some people addicted to shopping?;Part 3: How do advertisements influence the way people spend money?;Part 3: Is the gap between rich and poor people growing?;Part 3: Should governments tax rich people more?".split(';');
+H.forEach(q=>{const e=document.createElement('div');e.className='bub';e.textContent=q;e.onclick=()=>show(`<h3>${q}</h3><p class=lang>Use: a conditional, a wish, present perfect + 3 lesson words.</p>`);$('g6').append(e)});
+// nav + animated letters
+['Grammar','Text','Part 1','Part 2','Part 3','Homework'].forEach((n,i)=>{const b=document.createElement('button');b.textContent=n;b.onclick=()=>go(i+1);$('nav').append(b)});
+function go(n){document.querySelectorAll('section').forEach((s,i)=>s.classList.toggle('on',i==n-1));document.querySelectorAll('nav button').forEach((b,i)=>b.classList.toggle('on',i==n-1));scrollTo(0,0)}go(1);
+document.querySelectorAll('h1,h2').forEach(h=>{const t=h.textContent;h.innerHTML=[...t].map((c,i)=>`<span style="animation-delay:${i*.08}s">${c==' '?'&nbsp;':c}</span>`).join('')});
+// snow
+const cv=$('snow'),cx=cv.getContext('2d');let S=[];function rs(){cv.width=innerWidth;cv.height=innerHeight}rs();onresize=rs;
+for(let i=0;i<140;i++)S.push({x:Math.random()*3000,y:Math.random()*2000,r:1+Math.random()*3,v:.5+Math.random()*1.5});
+(function f(){cx.clearRect(0,0,cv.width,cv.height);cx.fillStyle='#fff';S.forEach(s=>{s.y+=s.v;s.x+=Math.sin(s.y/50);if(s.y>cv.height){s.y=-5;s.x=Math.random()*cv.width}cx.globalAlpha=.8;cx.beginPath();cx.arc(s.x%cv.width,s.y,s.r,0,7);cx.fill()});requestAnimationFrame(f)})();
+</script>
+<style>
+#box h3{font-size:clamp(36px,6.5vw,68px);text-shadow:0 0 25px #ffd36e}
+#box{animation:loom .6s cubic-bezier(.2,1.4,.4,1)}@keyframes loom{from{transform:scale(.05) rotate(-20deg);opacity:0}}
+.grid{gap:30px;padding:20px}
+.bub{border-radius:50% 0 50% 50%!important;transform:rotate(-45deg);aspect-ratio:1;min-height:0;padding:30px;font-size:18px}
+.bub:hover{transform:rotate(-45deg) scale(1.08)}
+.bub i{transform:rotate(45deg);font-style:normal;display:block;line-height:1.3}
+.bub.done{border-radius:50%!important;transform:none;border:none;background:radial-gradient(circle at 35% 30%,#fff,#d6ebff 55%,#8fb8e8);box-shadow:0 0 40px #fff,0 0 90px #7fd8ff;animation:roll .9s}
+.bub.done i{transform:none;font-size:64px}
+.bub.done:hover{transform:scale(1.08)}
+@keyframes roll{from{transform:rotate(-45deg) scale(.5)}}
+</style>
+<script>
+function show(h,b){$('box').innerHTML='<span class=x onclick="mod.classList.remove(\'on\')">✕</span>'+h+(b&&!b.classList.contains('done')?'<p><button class=go id=ok2>Answered ✓ → make it a snowball</button></p>':'');mod.classList.add('on');
+if($('ok2'))$('ok2').onclick=()=>{b.classList.add('done');b.innerHTML='<i>❄</i>';mod.classList.remove('on');if(b.dataset.p1){dn++;$('p1s').textContent=dn+' / 20 done';if(dn==20)setTimeout(()=>globe.classList.add('on'),900)}}}
+function drop(id,txt,html,p1){const d=document.createElement('div');d.className='bub';d.innerHTML='<i style="font-size:52px;text-shadow:0 0 20px #fff">'+($(id).children.length+1)+'</i>';d.dataset.p1=p1?1:'';d.onclick=()=>show(html,d);$(id).append(d)}
+['g3','g4','g5','g6'].forEach(i=>$(i).innerHTML='');dn=0;$('p1s').textContent='0 / 20 done';
+P1.forEach(([q,u])=>drop('g3',q,`<h3>${q}</h3><p>🎯 You MUST use: ${u.split(' · ').map(x=>`<span class=chip>${x}</span>`).join('')}</p><p class=ex>Tip: answer + reason + example (2–3 sentences).</p>`,1));
+P2.forEach(([t,a,b,c,d],i)=>drop('g4',(i+1)+'. '+t,`<h3>${t}</h3><p>You should say:<br>• ${a}<br>• ${b}<br>• ${c}<br>• and explain ${d}</p><p class=lang>🧩 Idea map:<br>① <b>Hook</b> – one-line answer. <span class=ex>"The first thing that comes to mind is…"</span><br>② <b>${a}</b> – background (present perfect).<br>③ <b>${b} + ${c}</b> – story with detail and a vivid example.<br>④ <b>${d}</b> – feeling + reflection: <span class=ex>"If I could do it again, I would…" / "I wish I had…"</span></p>`));
+P3.forEach((q,i)=>drop('g5',(i+1)+'. '+q,`<h3>${q}</h3><p class=lang>🧩 Structure:<br>① <b>Opinion</b> – <span class=ex>"I'd say it largely depends on…"</span><br>② <b>Reason</b> – because…<br>③ <b>Example</b> – <span class=ex>"If people were taught…, they would…"</span><br>④ <b>Other side</b> – however, some people argue…<br>⑤ <b>Conclusion</b> – so overall…</p>`));
+H.forEach(q=>drop('g6',q,`<h3>${q}</h3><p class=lang>Use: a conditional, a wish, present perfect + 3 lesson words.</p>`));
+</script></body></html>
